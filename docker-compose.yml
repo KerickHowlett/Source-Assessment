@@ -1,5 +1,5 @@
 services:
-  db-dev:
+  db:
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
@@ -11,18 +11,5 @@ services:
     volumes:
       - db-source-data:/var/lib/postgresql/data
 
-  db-test:
-    image: postgres:17-alpine
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: source-test
-    ports:
-      - 5435:5432
-    volumes:
-      - db-source-test-data:/var/lib/postgresql/data
-
 volumes:
   db-source-data:
-  db-source-test-data:
