@@ -1,20 +1,17 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  db-dev:
+    image: postgres:17-alpine
+    restart: unless-stopped
     environment:
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - '3000:3000'
-    depends_on:
-      - db
+      - '5432:5432'
+    volumes:
+      - db-source-data:/var/lib/postgresql/data
 
-  db:
+  db-test:
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
