@@ -3,11 +3,11 @@ services:
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: source
     ports:
-      - '5432:5432'
+      - 5434:5432
     volumes:
       - db-source-data:/var/lib/postgresql/data
 
@@ -15,13 +15,14 @@ services:
     image: postgres:17-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: source-test
     ports:
-      - '5435:5432'
+      - 5435:5432
     volumes:
-      - db-source-data:/var/lib/postgresql/data
+      - db-source-test-data:/var/lib/postgresql/data
 
 volumes:
   db-source-data:
+  db-source-test-data:

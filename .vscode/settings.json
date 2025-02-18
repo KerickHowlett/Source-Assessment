@@ -5,7 +5,17 @@
             "driver": "PostgreSQL",
             "name": "Source DB",
             "password": "postgres",
-            "port": 5432,
+            "port": 5434,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "postgres"
+        },
+        {
+            "database": "source-test",
+            "driver": "PostgreSQL",
+            "name": "Source Test DB",
+            "password": "postgres",
+            "port": 5435,
             "previewLimit": 50,
             "server": "localhost",
             "username": "postgres"
