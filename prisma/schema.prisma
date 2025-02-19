@@ -9,7 +9,7 @@ datasource db {
 
 model Creator {
     id          String  @id @default(cuid())
-    fullName    String
+    fullName    String // TODO: Add unique constraint?
     creatorType String
     media       Media[]
 
@@ -20,6 +20,7 @@ model Media {
     id        String  @id @default(cuid())
     mediaName String
     mediaType String
+    // TODO: Create stored procedure to delete media upon creator deletion with onDelete?
     creator   Creator @relation(fields: [creatorId], references: [id])
     creatorId String
 
