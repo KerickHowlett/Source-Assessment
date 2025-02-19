@@ -11,7 +11,7 @@ model Creator {
     id          String  @id @default(cuid())
     fullName    String
     creatorType String
-    Media       Media[]
+    media       Media[]
 
     @@map("creators")
 }
